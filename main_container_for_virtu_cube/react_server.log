@@ -22,3 +22,20 @@ Compiling...
 Compiled successfully!
 webpack compiled successfully
 Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/VirtuCube/VirtuCubeContainer.js
+  Line 121:18:  The ref value 'mountRef.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'mountRef.current' to a variable inside the effect, and use that variable in the cleanup function  react-hooks/exhaustive-deps
+  Line 128:6:   React Hook useEffect has missing dependencies: 'cubeState.isRotating' and 'cubeState.isSolving'. Either include them or remove the dependency array                                                                                                              react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/VirtuCube/VirtuCubeContainer.js
+  Line 121:18:  The ref value 'mountRef.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'mountRef.current' to a variable inside the effect, and use that variable in the cleanup function  react-hooks/exhaustive-deps
+  Line 128:6:   React Hook useEffect has missing dependencies: 'cubeState.isRotating' and 'cubeState.isSolving'. Either include them or remove the dependency array                                                                                                              react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
+Compiling...

@@ -33,6 +33,9 @@ const VirtuCubeContainer = () => {
   useEffect(() => {
     if (!mountRef.current) return;
     
+    // Store a reference to the mount element to use in the cleanup function
+    const mountElement = mountRef.current;
+    
     // Create scene
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#1A1A1A');
@@ -49,10 +52,10 @@ const VirtuCubeContainer = () => {
     // Setup renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(
-      mountRef.current.clientWidth,
-      mountRef.current.clientHeight
+      mountElement.clientWidth,
+      mountElement.clientHeight
     );
-    mountRef.current.appendChild(renderer.domElement);
+    mountElement.appendChild(renderer.domElement);
     
     // Add lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -84,10 +87,10 @@ const VirtuCubeContainer = () => {
     
     // Handle window resize
     const handleResize = () => {
-      if (!mountRef.current) return;
+      if (!mountElement) return;
       
-      const width = mountRef.current.clientWidth;
-      const height = mountRef.current.clientHeight;
+      const width = mountElement.clientWidth;
+      const height = mountElement.clientHeight;
       
       sceneRef.current.camera.aspect = width / height;
       sceneRef.current.camera.updateProjectionMatrix();
@@ -96,12 +99,15 @@ const VirtuCubeContainer = () => {
     
     window.addEventListener('resize', handleResize);
     
+    // Get the rotation state from cubeState to use in animation
+    const { isRotating, isSolving } = cubeState;
+    
     // Start animation loop
     const animate = () => {
       sceneRef.current.animationId = requestAnimationFrame(animate);
       
       // Rotate the cube slightly for demonstration
-      if (!cubeState.isRotating && !cubeState.isSolving) {
+      if (!isRotating && !isSolving) {
         cube.rotation.y += 0.005;
       }
       
@@ -117,15 +123,15 @@ const VirtuCubeContainer = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(sceneRef.current.animationId);
       
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountElement) {
+        mountElement.removeChild(renderer.domElement);
       }
       
       // Dispose of Three.js resources
       scene.clear();
       renderer.dispose();
     };
-  }, []);
+  }, [cubeState.isRotating, cubeState.isSolving]);
 
   // Function to create a simple Rubik's Cube placeholder
   const createRubiksCube = () => {
