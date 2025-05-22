@@ -1,0 +1,151 @@
+/* VirtuCube Container Styles */
+.virtucube-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 80px);
+  position: relative;
+  background-color: var(--kavia-dark);
+}
+
+.canvas-container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Loading State */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(26, 26, 26, 0.8);
+  z-index: 10;
+  color: var(--text-color);
+  font-size: 1.5rem;
+}
+
+/* Controls Section */
+.virtucube-controls {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid var(--border-color);
+}
+
+.controls-section {
+  margin-bottom: 1.5rem;
+}
+
+.controls-section h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--kavia-orange);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Face Controls Grid */
+.face-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.face-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.face-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.face-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+.control-btn {
+  background-color: rgba(232, 122, 65, 0.2);
+  color: var(--text-color);
+  border: 1px solid var(--kavia-orange);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  background-color: var(--kavia-orange);
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: rgba(232, 122, 65, 0.1);
+  border-color: rgba(232, 122, 65, 0.3);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.reset-btn, .solve-btn {
+  flex: 1;
+  padding: 0.75rem;
+}
+
+.reset-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+}
+
+.solve-btn {
+  background-color: var(--kavia-orange);
+  border: 1px solid var(--kavia-orange);
+}
+
+/* Help Section */
+.help {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.help p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .virtucube-container {
+    height: calc(100vh - 60px);
+  }
+  
+  .face-controls {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .control-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+}
