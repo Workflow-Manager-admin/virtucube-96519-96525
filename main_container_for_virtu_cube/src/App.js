@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import VirtuCubeContainer from './components/VirtuCube/VirtuCubeContainer';
 
 function App() {
   return (
@@ -8,27 +9,17 @@ function App() {
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
             <div className="logo">
-              <span className="logo-symbol">*</span> KAVIA AI
+              <span className="logo-symbol">*</span> VirtuCube
             </div>
-            <button className="btn">Template Button</button>
+            <div className="nav-links">
+              <button className="btn">Help</button>
+            </div>
           </div>
         </div>
       </nav>
 
       <main>
-        <div className="container">
-          <div className="hero">
-            <div className="subtitle">AI Workflow Manager Template</div>
-            
-            <h1 className="title">main_container_for_virtu_cube</h1>
-            
-            <div className="description">
-              Start building your application.
-            </div>
-            
-            <button className="btn btn-large">Button</button>
-          </div>
-        </div>
+        <VirtuCubeContainer />
       </main>
     </div>
   );
